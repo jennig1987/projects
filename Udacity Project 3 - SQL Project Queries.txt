@@ -1,0 +1,36 @@
+/* Query 1 - query used for first insight/slide 1 */
+SELECT c.state, c.country, SUM(i.total) TotalSpent
+FROM Customer c
+JOIN Invoice i
+ON c.CustomerId = i.CustomerId
+WHERE c.country like 'USA'
+GROUP BY c.State
+ORDER BY SUM(i.total) DESC
+LIMIT 10;
+
+/* Query 2 - query used for second insight/slide 2 */
+SELECT count(t.Name), g.Name
+FROM Track t
+JOIN Genre g
+ON t.GenreId = g.GenreId
+GROUP BY g.Name
+ORDER BY count(t.Name) DESC
+LIMIT 10;
+
+/* Query 3 - query used for third insight/slide 3 */
+SELECT count(r.Title), a.Name
+FROM Artist a
+JOIN Album r
+ON r.ArtistId = a.ArtistId
+GROUP BY a.name
+ORDER BY count(r.Title) DESC
+LIMIT 10;
+
+/* Query 4 - query used for fourth insight/slide 4 */
+SELECT g.Name, count(t.name)
+FROM Track t
+JOIN Genre g
+ON t.GenreId = g.GenreId
+GROUP BY g.Name
+ORDER BY count(t.name)
+LIMIT 5;
